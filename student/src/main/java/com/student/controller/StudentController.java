@@ -23,7 +23,9 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteStudent(@RequestParam Long id) {
+    public Student deleteStudent(@RequestParam Long id) {
+        Student s = repository.findById(id).orElseThrow();
         repository.deleteById(id);
+        return s;
     }
 }
